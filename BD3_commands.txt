@@ -11,6 +11,7 @@ spark-submit \
 --executor-cores 8 \
 BD3_train.py /home/aleksandra.stojnev/apps/andjelija.djordjevic/Data /home/aleksandra.stojnev/apps/andjelija.djordjevic/BD3/spark-model
 
+BD3trainer.py /home/aleksandra.stojnev/apps/andjelija.djordjevic/Data /home/aleksandra.stojnev/apps/andjelija.djordjevic/BD3/model
 
 Producer:
 
@@ -21,6 +22,8 @@ python BD3_producer.py /home/aleksandra.stojnev/apps/andjelija.djordjevic/BD3/Te
 
 Consumer:
 spark-submit --jars spark-streaming-kafka-0-8-assembly_2.11-2.4.5.jar BD3_consumer.py localhost:9092 Moving3 1 /home/aleksandra.stojnev/apps/andjelija.djordjevic/BD3/spark-model
+
+spark-submit --jars spark-streaming-kafka-0-8-assembly_2.11-2.4.5.jar BD3_consumer.py localhost:9092 Moving3 1 /home/aleksandra.stojnev/apps/andjelija.djordjevic/BD3/model
 
 spark-submit \
 --master spark://localhost:7077 \
